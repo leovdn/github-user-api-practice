@@ -1,10 +1,13 @@
 const divContent = document.querySelector('.content');
 const btnElement = document.querySelector('#btn');
 const inputElement = document.querySelector('#username');
+const listElement = document.querySelector('ul');
+
 
 btnElement.addEventListener('click', inputText);
 
 function inputText() {
+  listElement.innerHTML = "";
   const user = inputElement.value;
   puxarDados(user);  
 }
@@ -13,7 +16,6 @@ function inputText() {
 async function puxarDados(user) { 
   const dadosResponse = await fetch(`https://api.github.com/users/${user}`);
   const dadosJSON = await dadosResponse.json();
-  const listElement = document.querySelector('ul');
   
   
   for (let [key, value] of Object.entries(dadosJSON)) {
@@ -25,7 +27,6 @@ async function puxarDados(user) {
 }
 
 function createList(key, value) {
-  divContent.innerHTML = "";
   const liElement = document.createElement('li');
   liElement.innerHTML = `<h3>${key}</h3> <p>${value}</p>`;
 
