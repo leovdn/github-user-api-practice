@@ -94,6 +94,10 @@ li p {
     flex: 2;
 }
 
+img {
+    max-width: 150px;
+}
+
 @keyframes show {
     from {
         opacity: 0;

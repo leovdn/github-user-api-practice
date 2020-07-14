@@ -17,18 +17,21 @@ async function puxarDados(user) {
   const dadosResponse = await fetch(`https://api.github.com/users/${user}`);
   const dadosJSON = await dadosResponse.json();
   
-  
-  for (let [key, value] of Object.entries(dadosJSON)) {
-    const liItem = createList(key, value);
+  const {name, login, avatar_url, repos_url} = dadosJSON;
+  const liItem = createList(name, login, avatar_url, repos_url);
     divContent.appendChild(listElement);
     listElement.appendChild(liItem);
-  }    
   
 }
 
-function createList(key, value) {
+function createList(name, login, avatar_url, repos_url) {
   const liElement = document.createElement('li');
-  liElement.innerHTML = `<h3>${key}</h3> <p>${value}</p>`;
+  liElement.innerHTML = `
+  <h3><img src="${avatar_url}"></h3> 
+  <p>${name}</p>
+  <p>${login}</p>
+  <a href="${repos_url}">Repositórios</a>
+  `;
 
   return liElement;
 }
