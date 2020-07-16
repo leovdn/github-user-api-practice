@@ -6,6 +6,7 @@ const inputElement = document.querySelector('#username');
 const infoListElement = document.querySelector('.info-list');
 const dataListElement = document.querySelector('.data-list');
 
+
 divCard.appendChild(divInfo);
 divCard.appendChild(divData);
 
@@ -15,6 +16,7 @@ function inputText() {
   // listElement.innerHTML = "";
   const user = inputElement.value;
   puxarDados(user);  
+  divCard.classList.add('active');
 }
 
 
@@ -43,7 +45,7 @@ function createDataList(public_repos, followers, following) {
 function createInfoList(name, login, avatar_url, bio) {
 
   infoListElement.innerHTML = `
-    <img src="${avatar_url}" alt="">
+    <img src="${avatar_url}" alt="Avatar image">
     <p>${login}</p>
     <h2>${name}</h2>
     <p>${bio}</p>
