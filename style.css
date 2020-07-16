@@ -13,39 +13,37 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.userField {
-    padding: 22px;
-    backdrop-filter: blur(5px);
-    background: rgba(62, 79, 133, 0.479);
-    border: 4px solid white;
-    border-radius: 4px;
-    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    max-width: 720px;
-    margin: 20px auto;
-}
+
 
 input, button {
     padding: 12px;
     border: none;
     outline: none;
+    height: 48px;
 }
 
 input {
     width: 300px;
-    background: linear-gradient(45deg, #7e7fb5,#84bcd8) fixed;
+    background-color: #c9afe6;
     border-radius: 4px 0 0 4px;
+    flex: 1;
+    transition: 300ms;
+}
 
+input:hover, input:focus {
+    background-color: #c9afe69d;
 }
 
 button {
-    background: rgb(66, 36, 148);
+    background: #8663BD;
     cursor: pointer;
     color: white;
     font-weight: bold;
     border-radius: 0px 4px 4px 0px ;
+}
 
+button:hover {
+    background: #7649be;
 }
 
 .content {
@@ -80,13 +78,40 @@ h2 {
     margin-bottom: 24px;
 }
 
+.userField {
+    backdrop-filter: blur(5px);
+    border-radius: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 500px;
+    margin: 24px auto;
+}
+
+.userField .img {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.userField img {
+    border: none;
+    box-shadow: none;
+}
+
 .card {
     background: #fff;
     max-width: 500px;
-    margin: 64px auto;
+    margin: 0 auto 24px auto;
     display: flex;
     box-shadow: 4px 4px 22px 0px rgba(0, 0, 0, 0.7);
     border-radius: 2px;
+    visibility: hidden;
+}
+
+.card.active {
+    visibility: visible;    
+    animation: show 300ms forwards;
 }
 
 .card .user-info {
@@ -125,17 +150,18 @@ h2 {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
+@media (max-width: 530px) {
+    .card {
+        flex-direction: column;
+    }
+    .user-info img {
+        margin: 24px auto;
+    }
+    .card .user-data ul {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: initial;
+    }
+}
 
 @keyframes show {
     from {
